@@ -1,6 +1,8 @@
 ﻿// Write required code.
 
 // Data - do not change it in code!
+using System.Data;
+
 string[] names = {
     "Mickey Mouse", "Minnie Mouse", "Donald Duck", "Goofy", "Pluto", "Daisy Duck", "Simba", "Nala", 
     "Timon", "Pumbaa", "Mufasa", "Ariel", "Flounder", "Sebastian", "Ursula", "Belle", "Beast", "Gaston", 
@@ -9,11 +11,26 @@ string[] names = {
 };
 
 
+
 // Print all array elements, *perLine* elements per one line
 // After all elements except last one should be ", " - also on the end of lines.
 // After last element should be ".".
 void PrintGroups(string[] t, int perLine)
 {
+    for (int i = 0; i < t.Length; i++)
+    {
+        Console.Write(t[i]);
+
+        if (i==t.Length - 1)
+            { Console.WriteLine("."); }
+
+        else if ((i+1)%perLine==0)
+            { Console.WriteLine(","); }
+
+        else 
+            { Console.Write(", "); }
+
+    }
 
     // Write required code.
 
@@ -28,10 +45,27 @@ void PrintGroups(string[] t, int perLine)
 void PrintColumns(string[] t, int perLine, int width)
 {
 
-    // Write required code.
+    for (int i = 0; i < t.Length; i++)
+    {
 
+        if (t[i].Length > width)
+        { Console.Write(t[i].Substring(0, width)); }
+
+        else if (t[i].Length < width)
+        { Console.Write(t[i].PadRight(width)); }
+
+        else
+        { Console.Write(t[i]); }
+
+
+        if ((i + 1) % perLine == 0)
+        { Console.WriteLine(); }
+
+        else
+        { Console.Write("| "); }
+
+    }
 }
-
 
 // Test how your functions work. 
 // You can temprary comment some lines not needed for current testing.
